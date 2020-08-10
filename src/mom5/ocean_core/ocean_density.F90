@@ -676,8 +676,8 @@ real    :: nrho_press = 2000.0
 logical :: diff_nrho_press = .false.
 
 ! variables for binning to neutral density with nonconstant bin sizes
-integer,parameter :: max_bin_edges = 10
-integer,parameter :: max_bins = 9
+integer :: max_bin_edges = 10
+integer :: max_bins = 9
 logical :: variable_neutral_binning = .false.
 real :: variable_bin_edges(max_bin_edges)
 integer :: variable_bins(max_bins)
