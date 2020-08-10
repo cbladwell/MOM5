@@ -676,14 +676,14 @@ real    :: nrho_press = 2000.0
 logical :: diff_nrho_press = .false.
 
 ! variables for binning to neutral density with nonconstant bin sizes
-integer :: max_bin_edges = 10
-integer :: max_bins = 9
+integer, parameter :: max_bin_edges = 10
+integer, parameter :: max_bins = 9
 logical :: variable_neutral_binning = .false.
 integer :: num_var_bins
 integer :: total_var_bins
 real    :: step
-real, dimension(:),   allocatable    :: variable_bin_edges
-integer, dimension(:),   allocatable :: variable_bins
+real, dimension(max_bin_edges) :: variable_bin_edges
+integer, dimension(max_bins)   :: variable_bins
 
 ! for diagnostic partitioning of vertical according
 ! to potential temperature or conservative temperature classes
