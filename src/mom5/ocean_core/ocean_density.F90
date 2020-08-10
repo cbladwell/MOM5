@@ -679,11 +679,11 @@ logical :: diff_nrho_press = .false.
 integer :: max_bin_edges = 10
 integer :: max_bins = 9
 logical :: variable_neutral_binning = .false.
-real    :: variable_bin_edges(max_bin_edges)
-integer :: variable_bins(max_bins)
 integer :: num_var_bins
 integer :: total_var_bins
 real    :: step
+real, dimension(:),   allocatable    :: variable_bin_edges
+integer, dimension(:),   allocatable :: variable_bins
 
 ! for diagnostic partitioning of vertical according
 ! to potential temperature or conservative temperature classes
