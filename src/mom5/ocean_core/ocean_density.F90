@@ -1348,7 +1348,7 @@ ierr = check_nml_error(io_status,'ocean_density_nml')
     neutralrho_bounds(k) = variable_bin_edges(num_var_bins+1)
     ! assign neutralrho_bounds and neutralrho_ref to Dens type
     do k=1,total_var_bins
-      neutralrho_interval = 0.5*(neutralrho_bounds(k+1)-variable_bin_edges(k))
+      neutralrho_interval = 0.5*(neutralrho_bounds(k+1)-neutralrho_bounds(k))
       Dens%neutralrho_ref(k) = neutralrho_bounds(k) + neutralrho_interval
     enddo
     do k=1,total_var_bins+1
