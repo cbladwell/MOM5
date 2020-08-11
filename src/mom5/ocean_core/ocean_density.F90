@@ -280,6 +280,26 @@ module ocean_density_mod
 !  to rational polynomial approximation to neutral density.
 !  </DATA>
 !
+!  <DATA NAME="variable_neutral_binning" TYPE="logical">
+!  Set to true to partition vertical neutral density axis with non constant bin
+!  sizes. Can be used with tracer water-mass diagnostics.
+!  Default variable_neutral_binning=.false.
+!  </DATA>
+!  <DATA NAME="variable_bin_edges" TYPE="real">
+!  Specifies the edges where bin sizes changes. Should be specified as a list of
+!  bin edges in the namelist. Any density or tracer value greater (less) than
+!  the maximum (minimum) bin edges will be included in final (initial) bin.
+!  </DATA>
+!  <DATA NAME="variable_bins" TYPE="integer">
+!  Specifies the number of bins between the edges specified in the
+!  variable_bin_edges variable. Should be specified as a list of numbers of bins
+!  of length m if variable_bin_edges is of length m+1.
+!  </DATA>
+!  <DATA NAME="num_var_bins" TYPE="integer">
+!  Specifies the number length of the length of the variable_bins array, i.e m
+!  if there are m+1 variable_bin_edges
+!  </DATA>
+!
 !  <DATA NAME="theta_min" UNITS="C" TYPE="real">
 !  Minimum conservative temperature or potential temperature used to
 !  partition vertical according to temperature.
