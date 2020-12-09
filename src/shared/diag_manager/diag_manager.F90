@@ -1693,7 +1693,8 @@ CONTAINS
        ! compute the forward rising average weight from 0 to 1
        fwd_risavg = output_fields(out_num)%fwd_risavg
        IF (fwd_risavg) THEN
-          weight1 = time-output_fields(out_num)%last_output
+          ! weight1 = time-output_fields(out_num)%last_output
+          weight1 = output_fields(out_num)%next_output - time
        END IF
 
        ! compute the diurnal index
@@ -1829,8 +1830,13 @@ CONTAINS
                                              & output_fields(out_num)%buffer(i-hi,j-hj,k1,sample) +&
                                              & field(i-is+1+hi, j-js+1+hj, k) * weight1
                                      END IF
-                                     output_fields(out_num)%counter(i-hi,j-hj,k1,sample) =&
-                                          & output_fields(out_num)%counter(i-hi,j-hj,k1,sample) + weight1
+                                     IF (fwd_risavg) THEN
+                                       output_fields(out_num)%counter(i-hi,j-hj,k,sample) =&
+                                            &output_fields(out_num)%counter(i-hi,j-hj,k,sample) + 1
+                                     ELSE
+                                       output_fields(out_num)%counter(i-hi,j-hj,k,sample) =&
+                                            &output_fields(out_num)%counter(i-hi,j-hj,k,sample) + weight1
+                                     END IF
                                   END IF
                                END DO
                             END DO
@@ -1849,8 +1855,13 @@ CONTAINS
                                              & output_fields(out_num)%buffer(i-hi,j-hj,k,sample) +&
                                              & field(i-is+1+hi,j-js+1+hj,k)*weight1
                                      END IF
-                                     output_fields(out_num)%counter(i-hi,j-hj,k,sample) =&
-                                          &output_fields(out_num)%counter(i-hi,j-hj,k,sample) + weight1
+                                     IF (fwd_risavg) THEN
+                                       output_fields(out_num)%counter(i-hi,j-hj,k,sample) =&
+                                            &output_fields(out_num)%counter(i-hi,j-hj,k,sample) + 1
+                                     ELSE
+                                       output_fields(out_num)%counter(i-hi,j-hj,k,sample) =&
+                                            &output_fields(out_num)%counter(i-hi,j-hj,k,sample) + weight1
+                                     END IF
                                   END IF
                                END DO
                             END DO
@@ -1873,8 +1884,13 @@ CONTAINS
                                              & output_fields(out_num)%buffer(i-hi,j-hj,k1,sample) +&
                                              & field(i-is+1+hi, j-js+1+hj, k) * weight1
                                      END IF
-                                     output_fields(out_num)%counter(i-hi,j-hj,k1,sample) =&
-                                          & output_fields(out_num)%counter(i-hi,j-hj,k1,sample) + weight1
+                                     IF (fwd_risavg) THEN
+                                       output_fields(out_num)%counter(i-hi,j-hj,k,sample) =&
+                                            &output_fields(out_num)%counter(i-hi,j-hj,k,sample) + 1
+                                     ELSE
+                                       output_fields(out_num)%counter(i-hi,j-hj,k,sample) =&
+                                            &output_fields(out_num)%counter(i-hi,j-hj,k,sample) + weight1
+                                     END IF
                                   END IF
                                END DO
                             END DO
@@ -1893,8 +1909,13 @@ CONTAINS
                                              & output_fields(out_num)%buffer(i-hi,j-hj,k,sample) +&
                                              & field(i-is+1+hi,j-js+1+hj,k)*weight1
                                      END IF
-                                     output_fields(out_num)%counter(i-hi,j-hj,k,sample) =&
-                                          &output_fields(out_num)%counter(i-hi,j-hj,k,sample) + weight1
+                                     IF (fwd_risavg) THEN
+                                       output_fields(out_num)%counter(i-hi,j-hj,k,sample) =&
+                                            &output_fields(out_num)%counter(i-hi,j-hj,k,sample) + 1
+                                     ELSE
+                                       output_fields(out_num)%counter(i-hi,j-hj,k,sample) =&
+                                            &output_fields(out_num)%counter(i-hi,j-hj,k,sample) + weight1
+                                     END IF
                                   END IF
                                END DO
                             END DO
