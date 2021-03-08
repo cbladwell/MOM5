@@ -513,6 +513,7 @@ CONTAINS
     LOGICAL :: mask_variant1, verbose1
     LOGICAL :: cm_found
     CHARACTER(len=128) :: msg
+    INTEGER :: second_init, day_init, tick_init
 
     INTEGER :: day_init,second_init,tick_init ! components of the next output date
 
@@ -612,6 +613,9 @@ CONTAINS
                 files(file_num)%local = .TRUE.
              END IF
           END IF
+
+          CALL get_time(init_time,second_init,day_init)
+          write(*,*) '! initial time:', second_init+day_init*60.0*60.0*24.0
 
           ! Need to sync start_time of file with init time of model
           ! and close_time calculated with the duration of the file.
